@@ -1,0 +1,23 @@
+{% load static %}
+<html>
+    <head>
+        <title>Payments App</title>
+    </head>
+    <body>
+        <center><h1>Welcome to Payments App</h1></center>
+        
+        <h3>You need to pay 100Rs.</h3>
+        <form method='post' action='{% url 'charge' %}'>
+        {% csrf_token %}
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="{{ key }}"
+                data-description="A Django Charge for Testing"
+                data-amount="10000"
+                data-locale="auto">
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-currency="inr"
+                data-name="Payments Testing"
+            </script>
+        </form>
+    </body>
+</html>
